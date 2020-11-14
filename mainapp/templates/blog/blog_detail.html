@@ -1,0 +1,99 @@
+{% extends 'blog/base.html' %}
+
+    {% block content %}
+    
+        
+<div class="container">
+<a class="btn white green-text"  href="{% url 'blog-home' %}" > Back </a>  
+  {% if posts.author == user %}
+
+               <a class="btn white teal-text" href="{% url 'blog-update' posts.id%} ">Update</A> 
+  
+               <a class="btn white red-text" href="{% url 'post-delete' posts.id%} ">Delete</A> 
+                              
+                    {% endif %}
+                      
+ <div class= "row">
+        <!--Right-->
+       
+          <div class="card col l12 m12 s12 ">
+             
+             <a class="float-text text-green"> {{posts.title}} </a>
+            <div class="chip right">
+               <img  src = "{{posts.author.profile.user_image.url}}" >
+                 By {{posts.author}} on {{posts.date_posted|date:"F d, Y"}} 
+           </div>
+        
+             <!--user image display-->
+            <!-- <img src="{{ posts.image.url}}" alt="connect" style="max-height:300px">-->
+             
+             
+            
+            
+            <p> {{posts.content|safe}} </p> 
+              
+              </div>
+         
+
+          <!--left-->
+           <div class="col l3 m4 s12 ">
+       
+          create
+          
+
+          </div>
+          
+      </div>
+      
+       </div>
+
+    <!--comments-->
+    
+<div class="container">
+<h5 class="white green-text float-text">Add comment</h5>
+<div class="row ">
+<div class="s12 l6 m12" >
+     <form action ="" method="POST">
+     {% csrf_token %}
+      {{comment_form.as_p}}
+
+    <button type="submit" class="green">Add Comment</button>
+</form>
+</div>
+<div class="col s12 l6 m12">
+
+{% for comment in comments %}
+<div class="grey">
+       <p>{{comment.name}} | {{comment.created}}</p>
+        {{comment.body | linebreaks }} </div>
+       <div class=" "> {% for reply in comment.replies.all %}
+        <!---<img height ="30px"  class="circle responsive-img z-depth-5" src ="{{user.profile.user_image.url}}" ><br>-->
+              <p>{{reply.name }} | {{reply.email}}</p>
+              {{reply.body|linebreaks}}
+
+        {% endfor %}</div><br>
+
+</div>
+</div>
+
+<!--comment list-->
+
+
+<p>Reply</p>
+<form action ="" method="POST">
+{{comment_form.as_p}}
+{% csrf_token %}
+      <input type="hidden" name="parent_id" value ="{{comment.id}}">
+        <button type="submit">Reply</button>
+        </form>
+
+{% empty %}
+<h4> There is no comment..</4>
+ {% endfor %}
+ </div>
+ </div>
+ </div> 
+{% endblock content %}
+    
+ 
+   

@@ -1,0 +1,35 @@
+
+
+
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="container">
+<div class ="row">  
+     
+     <div class="col s12 m8">
+
+         <div >
+       <form method="post">
+     {% csrf_token %}
+     
+   
+       <legend class="green-text">Delete Post</legend>
+       <h5> Are you sure you want to delete the post "{{post.title}}" </h5>
+
+      <button class="white red-text btn waves-effect wave-light" type= "Submit" > Yes, Delete </button>
+      <a class="btn white black-text" href= {% url 'blog_detail' post.id %} > Cancel </a>
+           </div>
+   </form>
+</div>
+     <div>
+    
+    
+</div>
+
+</div>
+</div>
+
+
+
+ 
+{% endblock content %}

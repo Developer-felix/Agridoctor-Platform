@@ -1,0 +1,50 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+<!--
+<div>
+   <form method="post">
+     {% csrf_token %}
+     <fieldset >
+       <legend>Log In</legend>
+        
+     {{form.as_p}}
+     </fieldset>
+      
+      <button type= "Submit" > Log In</button>      </div>
+   </form>
+
+     <small>Need An Account? <a href = " {% url 'register' %} ">Sign Up</a> </small>
+
+</div>
+-->
+
+<div class="container">
+<div class="row">
+       <form class="col s12" method="post">
+         
+     {% csrf_token %}
+     
+       <legend class="green-text"><h3>Login</h3></legend>
+        
+         
+          <div class="row">
+              <div class="input-field col s12 m6">
+                 {{form.as_p}}
+                      <button class="green btn waves-effect wave-light" type= "Submit" >Sign Up</button>
+              </div>
+              <div class="input-field col s12 m6">
+                     <small>Need An Account? <a href = " {% url 'register' %} ">Sign Up</a> </small>
+              </div>
+              
+          </div>
+          
+        
+              </div>
+       </form>  
+        
+ 
+</div>
+</div>
+</div>
+{% endblock %}

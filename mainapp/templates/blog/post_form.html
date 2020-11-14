@@ -1,0 +1,33 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="container">
+<div class ="row">  
+     
+     <div class="col s12 m8">
+
+         <div >
+       <form method="post">
+     {% csrf_token %}
+     
+   
+       <legend class="green-text">Blog Post</legend>
+       {{form.media}} 
+     {{form.as_p}}
+     
+   
+      <button style ="width: 100%; margin-top:5%"  class="green btn waves-effect wave-light" type= "Submit" > Post </button>      </div>
+   </form>
+</div>
+     <div>
+    
+    
+</div>
+
+</div>
+</div>
+
+
+
+ 
+{% endblock content %}
+

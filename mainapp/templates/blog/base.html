@@ -1,0 +1,212 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Agridoctor</title>
+  <link rel="stylesheet" type="text/css" href="">
+{% if title %}
+<title>Agridoctor - {{title}}</title>
+{% else %}
+<title>Agridoctor</title>
+{% endif %}
+
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href=" {% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'css/style.css'%}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body id="home">
+
+<!--Navbar-->
+<div class ="navbar-fixed">
+<!--green-->
+  <nav class="green darken-4 "  role="navigation">
+    
+    <div class="nav-wrapper container ">
+      
+      
+  <a id="logo-container" href="#" class="left brand-logo logo"><i class = "materialize-icons"></i>Agridoctor</a>
+     <!---->
+      <ul class="right text-green hide-on-med-and-down">
+          
+          <li><a  href="{% url 'main-home-page' %}">Home</a></li>
+           <li><a href="{% url 'agridoctor-home' %}">Agridoctor</a></li>
+           <li><a href="{% url 'blog-home' %}"> Blogs</a></li>
+           <li> <a href="{% url 'market-home' %}"> Market</a></li>
+      {% if user.is_authenticated %}
+           <li> <a href=" {% url 'dashbord' %} ">Dashbord</a> </li>
+          <li> <a href=" {% url 'profile' %} ">Profile</a> </li>
+           <li> <a href="{% url 'logout' %}">Logout</a></li>
+      {% else %}
+      
+         <li> <a href="{% url 'login' %}">Login</a></li>
+         <li><a href="{% url 'register' %} ">Register</a></li>
+       {% endif %}
+</ul>
+
+      <ul id="nav-mobile" class="sidenav">
+    
+       
+        <li><div class="user-view">
+      <div class="background">
+ <div class="slider ">
+    <ul class="slides ">
+      <li>
+        <img src="{% static 'images/sliderhome.jpg' %}">
+        
+      </li>
+      <li>
+        <img class="responsive-img" src="{% static 'images/sidebar.jpg'%}">
+       
+      </li>
+
+      <li>
+        <img class="responsive-img" src="{% static 'images/siderhome1.jpg'%}">
+       
+      </li>
+      </ul>
+      </div>
+
+      
+        
+      </div>
+      <a href="#user"><img class="circle" src="{% static 'images/home1.jpg'%}"></a>
+      <a href="{% url 'main-home-page' %}"><span class="white-text name">Agridoctor</span></a>
+      <a href="#email"><span class="white-text email">agridoctor@gmail.com</span></a>
+    </div></li>
+     
+         <li><a href="{% url 'main-home-page' %}"><i class="material-icons teal-text">home</i> Home</a></li>
+ 
+        <li><a href="{% url 'blog-home' %}"><i class="material-icons purple-text">assessment</i>Blog</a></li>
+        <li><a href="#contact"><i class="material-icons green-text">call</i>Contact</a></li>
+        <li> <a href="{% url 'market-home' %}"><i class="material-icons yellow-text">shopping_basket
+
+</i> Market</a></li>
+            
+      {% if user.is_authenticated %}
+      
+      <li> <a href=" {% url 'dashbord' %} "><i class="material-icons pink-text">account_balance</i>Darshbord</a> </li>
+       <li> <a href=" {% url 'profile' %} ">Profile</a> </li>
+       <li> <a href="{% url 'logout' %}">Logout</a></li>
+{% else %}
+    <li>  <a href="{% url 'login' %}"><i class="material-icons green-text">forward</i>Login</a></li>
+      <li><a href="{% url 'register' %} "><i class="material-icons blue-text">account_circle</i>Register</a></li>
+{% endif %}
+      </ul> 
+       
+    <!--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+        Launch static backdrop modal
+      </button>-->
+      <!---->
+     
+       <a href="#"  data-target="nav-mobile"  class="right sidenav-trigger"><i class="material-icons">menu</i></a>
+        <br>
+      <!-- Button trigger modal -->
+
+
+    </div>
+  </nav>
+  </div>
+ 
+<!--message-->
+
+ {% if messages %}
+   {% for message in messages %}
+     <div class="alert alert-{{ message.tags }}" >
+     {{message}}
+     </div>
+   {% endfor %}
+ {% endif %}
+
+   {% block content %}
+    
+   {% endblock content %}
+   
+ 
+   
+
+  <footer class="page-footer green darken-4 fixed-bottom">
+    <div class="container">
+      <div class="row">
+        <div class="col l6 s12">
+          <h5 class="white-text">Meet Us</h5>
+          <p class="grey-text text-lighten-4">OnjombaFelix@gmail.com</p>
+          <p class="grey-text text-lighten-4">0717713943</p>
+
+
+        </div>
+        <!--
+        <div class="col l3 s12">
+          <h5 class="white-text">Settings</h5>
+          <ul>
+            <li><a class="white-text" href="#!">Link 1</a></li>
+            <li><a class="white-text" href="#!">Link 2</a></li>
+            <li><a class="white-text" href="#!">Link 3</a></li>
+            <li><a class="white-text" href="#!">Link 4</a></li>
+          </ul>
+        </div>-->
+        <div class="col l3 s12">
+          <h5 class="white-text">Usefull Links</h5>
+          <ul class="white-text">
+        
+       
+          <li><a href="{% url 'main-home-page' %}">Home</a></li>
+          <li><a href="{% url 'agridoctor-home' %}">Agricoctor</a></li>
+         <li><a href="{% url 'blog-home' %}"> Blogs</a></li>
+        <li> <a href="{% url 'market-home' %}"> Market</a></li>
+        
+      {% if user.is_authenticated %}
+      
+       <li> <a href=" {% url 'profile' %} ">Profile</a> </li>
+       <li> <a href="{% url 'logout' %}">Logout</a></li>
+{% else %}
+        <li> <a href="{% url 'login' %}">Login</a></li>
+        <li><a href=" {% url 'register' %} ">Register</a></li>
+{% endif %}
+
+          
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="footer-copyright">
+      <div class="container">
+      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">OnjombaFelix</a>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+
+  <!--  Scripts-->
+
+
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{% static 'js/materialize.js'%}"></script>
+  <script src="{% static 'js/init.js'%}"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+</body>
+ 
+</html>
+

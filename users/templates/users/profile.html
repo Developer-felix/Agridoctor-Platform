@@ -1,0 +1,73 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class= "container">
+<!--
+<div class="row">
+      <div class="col s12 l4 m4">
+      <img  class="circle responsive-img z-depth-5" src = "{{user.profile.user_image.url}}" ><br>
+      </div>
+      <div class="col s12 l8 8">
+      Name: <h5> {{user.username}}</h5>
+Email: <h5> {{user.email}}</h5>
+      </div>
+     
+</div>
+
+
+
+
+   <form method="post" enctype = "multipart/form-data">
+     {% csrf_token %}
+     <fieldset >
+       <legend>Profile Infor</legend>
+        
+     {{u_form.as_p}}
+     {{p_form.as_p}}
+     </fieldset>
+      
+      <button type= "Submit" > Update</button>      </div>
+   </form>
+ <div>  
+
+-->
+<!--Ui creation-->
+ 
+<div class="row">
+       <form method="post" enctype = "multipart/form-data">
+     {% csrf_token %}
+       <legend class="green-text"><h3>Profile Information</h3></legend>
+        
+         
+          <div class="card row" >
+              <div class="input-field col s12 m6">
+
+
+                <div class="row">
+      <div class="col s12 l4 m4">
+      <img  class="circle responsive-img z-depth-5 " src = "{{user.profile.user_image.url}}" ><br>
+      </div>
+      <div class="col s12 l8 8">
+     <small> Name: </small> <h6 class="blue-text"> {{user.username}}</h6>
+     <small> Email: </small>  <h6 class="blue-text"> {{user.email}}</h6>
+      </div>
+     
+</div>
+              </div>
+              <div class="card input-field col s12 m6">
+                    
+     {{u_form.as_p}}
+     {{p_form.as_p}}
+     
+       <button class="green btn waves-effect wave-light" type= "Submit" >Update</button>
+              </div>
+              
+          </div>
+          
+       
+              </div>
+       </form>  
+        
+ 
+</div>
+</div>
+{% endblock content %}

@@ -1,0 +1,35 @@
+
+
+
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="container">
+<div class ="row">  
+     
+     <div class="col s12 m8">
+
+         <div >
+       <form method="post">
+     {% csrf_token %}
+     
+   
+       <legend class="green-text">Delete Sales</legend>
+       <h5 class="blue-text"> Are you sure you want to delete the sales {{post.type_of_item}} </h5>
+
+      <button class="white red-text btn waves-effect wave-light" type= "Submit" > Yes, Delete </button>
+   <a class="btn white black-text" href= {% url 'market-home' %} > Cancel </a>
+           </div>
+   </form>
+</div>
+     <div>
+    
+    
+</div>
+
+</div>
+</div>
+
+
+
+ 
+{% endblock content %}

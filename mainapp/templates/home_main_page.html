@@ -1,0 +1,146 @@
+ {% extends 'blog/base.html' %}
+ {% load static %}
+
+{% block content %}
+
+<!--slider-->
+
+ <div class="slider ">
+    <ul class="slides ">
+      <li>
+        <img src="{% static 'images/sliderhome.jpg' %}"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>Welcome To Agridoctor Platform!</h3>
+          <h5 class="light grey-text text-lighten-3">Your Agricultural problem is solved</h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'images/sliderhome1.jpg' %}"> <!-- random image -->
+        <div class="caption left-align">
+          <h3>We Allow You To Write and Post Blogs </h3>
+          <h5 class="light grey-text text-lighten-3">Get your problem solved</h5>
+        </div>
+      </li>
+      <li>
+        <img src="{% static 'images/sliderhome2.jpg' %}"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>Market Your Products </h3>
+          <h5 class="light grey-text text-lighten-3">Finally Agridoctor has nailed it for you</h5>
+        </div>
+      </li>
+    
+    </ul>
+  </div>
+<!--
+<nav>
+<div class="nav-wrapper green">
+ <div class="col s12">
+     
+          <a class="breadcrump" href="{% url 'main-home-page' %}">Home</a> /
+          <a class="breadcrump" href="{% url 'agridoctor-home' %}">Agricoctor</a> /
+         <a class="breadcrump" href="{% url 'blog-home' %}"> Blogs</a> /
+         <a class="breadcrump" href="{% url 'market-home' %}"> Market</a> /
+        
+      {% if user.is_authenticated %}
+      
+        <a class="breadcrump" href=" {% url 'profile' %} ">Profile</a> /
+        <a class="breadcrump" href="{% url 'logout' %}">Logout</a> /
+{% else %}
+         <a class="breadcrump" href="{% url 'login' %}">Login</a> /
+      <a class="breadcrump" href=" {% url 'register' %} ">Register</a> /
+{% endif %}
+
+
+ </div>
+</div>
+</nav>-->
+<!--Services-->
+
+<!--Services-->
+
+  <div id="service" class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+          
+           
+            <h5 class="center">Agricultural Growth</h5>
+
+            <p class="light">We did most of the heavy lifting for you to provide a market place to upload an item you want to sale and customers can reach you. This makes you advatise your products online. Write what you think in blogs to share experiences in agricultural industry. Agridoctor solves your challenges in deseases and any other challenge.</p>
+            <div class="card-image">
+              <img class="responsive-img" src=" {% static 'images/slider1.jpg' %}" alt="connect" > 
+               <span class="card-title">{{post.type_of_item}}</span>
+            </div>
+          </div>
+        </div>
+
+      <div class="col s12 m4">
+          <div class="icon-block">
+          
+           
+            <h5 class="center">History of  Agriculture</h5>
+
+            <p class="light">Agriculture is the science and art of cultivating plants and livestock. Agriculture was the key development in the rise of sedentary human civilization, whereby farming of domesticated species created food surpluses that enabled people to live in cities. The history of agriculture began thousands of years ago. After gathering wild grains beginning at least 105,000 years ago, nascent farmers began to plant them around 11,500 years ago. </p>
+            <div class="card-image">
+              <img class="responsive-img" src=" {% static 'images/slider1.jpg' %}" alt="connect" > 
+               <span class="card-title">{{post.type_of_item}}</span>
+            </div>
+          </div>
+        </div>
+
+      <div class="col s12 m4">
+          <div class="icon-block">
+          
+           
+            <h5 class="center">Agriculture in kenya</h5>
+
+            <p class="light float-text">Agriculture in Kenya dominates Kenya's economy. 15–17 percent of Kenya's total land area has sufficient fertility and rainfall to be farmed, and 7–8 percent can be classified as first-class land. In 2006, almost 75 percent of working Kenyans made their living by farming, compared with 80 percent in 1980.</p>
+            <div class="card-image">
+              <img class="responsive-img" src="https://images.app.goo.gl/7zoPbqeEa7XYbtSs7" alt="connect" > 
+               <span class="card-title">{{post.type_of_item}}</span>
+            </div>
+          </div>
+        </div>
+
+    </div>
+</div>
+  </div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col m10 offset-m1 s12">
+            <h2 class="center-align">Contact Form</h2>
+            <div class="row">
+                <form class="col m8 offset-m2 s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="name" type="text">
+                            <label for="name">Name</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <input id="email" type="email" class="form-input">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="input-field col s12">
+                          <textarea id="message" class="materialize-textarea"></textarea>
+                          <label for="message">Message</label>
+                        </div>
+                    </div>
+                    
+                    <div class="divider"></div>
+                    <div class="row">
+                        <div class="col m12">
+                         <p class="right-align "><button class=" btn green btn-large waves-effect waves-light green" type="button" name="action">Send Message</button></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

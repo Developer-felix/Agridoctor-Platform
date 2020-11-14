@@ -1,0 +1,79 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+
+ <div class="card medium ">
+ 
+          <div class="chip right">
+        <img  class="circle responsive-img z-depth-5 " src = "{{user.profile.user_image.url}}" >
+                {{user.username}}
+           </div>
+<small>Welcome come {{user.username}} enjoy our services now!</small>
+  <a href=" {% url 'profile' %} ">Profile</a> </li>
+       
+<div class="row">
+    <div class="Card col s12 l6 m6">
+         <a href="{% url 'blog-create' %}">
+             <button style ="width: 100%; margin-top:5%" class="green btn waves-effect wave-light" type= "Submit" >Click Me To New Create Blog </button>
+         </a>
+         <a href="{% url 'market-create' %}">
+             <button style ="width: 100%; margin-top:5%" class="green btn waves-effect wave-light" type= "Submit" >Click Me To Sale Your Agricultural Product</button>
+         </a>
+         <a href="{% url 'agridoctor-create' %}">
+             <button style ="width: 100%; margin-top:5%" class="green btn waves-effect wave-light" type= "Submit" >Click Me To Post Problem</button>
+         </a>
+    </div>
+      <div class="card col s12 l6 m6">
+         <table class="table table-bordered responsive-table">
+         <h6 class="blue-text">Active Users</h6>
+  <thead>
+    <tr>
+      
+      <th>Username</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+      <tr><td>
+    
+       <div class="chip left">
+   <img  class="circle responsive-img z-depth-5 " src = "{% static 'images/slider1.jpg'%}" >
+   {{ user.username }}
+           </div>
+
+      </td>
+
+        
+        
+        <td>{{ user.email }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% if users.has_other_pages %}
+  <ul class="pagination">
+    {% if users.has_previous %}
+      <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in users.paginator.page_range %}
+      {% if users.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+      {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if users.has_next %}
+      <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+{% endif %}
+     </div>
+</div>
+
+{% endblock content %}
